@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+</head>
+<body>
+<div data-toaster-toast-package>
+    <div data-toaster-toast data-toaster-type="info"
+         data-toaster-title="Test dom 1"
+         data-toaster-message="Test dom message 1"
+    ></div>
+    <div data-toaster-toast data-toaster-type="success"
+         data-toaster-title="Test dom 2"
+         data-toaster-message="Test dom message 2"
+    ></div>
+    <div data-toaster-toast data-toaster-type="warning"
+         data-toaster-title="Test dom 3"
+         data-toaster-message="Test dom message 3"
+    ></div>
+    <div data-toaster-toast data-toaster-type="error"
+         data-toaster-title="Test dom 4"
+         data-toaster-message="Test dom message 4"
+    ></div>
+</div>
+
+<script type="module" src="/src/toaster.vjs/index.ts"></script>
+<script>
+    toaster.info( "info", 'bla bla bla bla bla', "top-right", 5000);
+    toaster.success( "success", 'bla bla bla bla bla', "top-right", 5000);
+    toaster.warning( "warning", 'bla bla bla bla bla', "top-right", 5000);
+    toaster.error( "error", 'bla bla bla bla bla', "top-right", 5000);
+    toaster.default( "default", 'bla bla bla bla bla', "top-right", 5000);
+</script>
+</body>
 </html>

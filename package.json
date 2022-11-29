@@ -1,8 +1,18 @@
 {
-  "name": "toaster",
-  "private": true,
-  "version": "0.0.0",
+  "name": "toaster.vjs",
+  "private": false,
+  "version": "0.0.1",
+  "main": "dist/toaster.vjs.js",
   "type": "module",
+  "description": "Vanilla JS notifications with SSR FlashBag support via DOM",
+  "keywords": [
+    "notification",
+    "toast",
+    "alert"
+  ],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,6 +20,7 @@
   },
   "devDependencies": {
     "jest": "^29.3.1",
+    "sass": "^1.56.1",
     "typescript": "^4.6.4",
     "vite": "^3.2.3"
   }

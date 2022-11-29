@@ -1,0 +1,162 @@
+body {
+  background: black;
+  color: white;
+}
+
+
+.toaster-container {
+  position: absolute;
+  overflow: hidden;
+
+  //&.toaster-container-top {
+  //  top: 0;
+  //}
+  //
+  //&.toaster-container-left {
+  //  left: 0;
+  //}
+  //
+  //&.toaster-container-right {
+  //  right: 0;
+  //
+  //}
+  //
+  //&.toaster-container-bottom {
+  //  bottom: 0;
+  //}
+  //
+  //&.toaster-container-center {
+  //  left: 50%;
+  //}
+
+
+  &.toaster-container-left-top {
+    top: 0;
+    left: 0;
+
+    .toast {
+      transform: translateX(-110%);
+
+      &.toast-visible {
+        transform: translateX(0%);
+      }
+    }
+  }
+
+  &.toaster-container-center-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .toast {
+      transform: translateY(-145%);
+
+      &.toast-visible {
+        transform: translateY(0%);
+      }
+    }
+  }
+
+  &.toaster-container-right-top {
+    top: 0;
+    right: 0;
+
+    .toast {
+      transform: translateX(110%);
+
+      &.toast-visible {
+        transform: translateX(0%);
+      }
+    }
+  }
+
+  &.toaster-container-left-bottom {
+    bottom: 0;
+    left: 0;
+
+    .toast {
+      transform: translateX(-110%);
+
+      &.toast-visible {
+        transform: translateX(0%);
+      }
+    }
+  }
+
+  &.toaster-container-center-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .toast {
+      transform: translateY(145%);
+
+      &.toast-visible {
+        transform: translateY(0%);
+
+      }
+    }
+  }
+
+  &.toaster-container-right-bottom {
+    bottom: 0;
+    right: 0;
+
+    .toast {
+      transform: translateX(110%);
+
+      &.toast-visible {
+        transform: translateX(0%);
+      }
+    }
+  }
+
+
+  .toast {
+    position: relative;
+    background: white;
+    width: 16rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border-radius: 0.5rem; /* 8px */
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem 0.5rem 1rem;
+    transition: all;
+    transition-duration: 200ms;
+    color: black;
+
+    .toast-body {
+      display: flex;
+
+      .toast-icon {
+        margin-right: 1rem;
+      }
+
+      .toast-content {
+
+        .toast-title {
+          font-weight: bold;
+        }
+
+        .toast-text {
+
+        }
+
+      }
+
+
+    }
+
+
+    .close-toast-button {
+      position: absolute;
+      right: 0.5rem;
+      top: 7px;
+      width: 1.2rem;
+      svg {
+
+      }
+    }
+
+  }
+}
+
