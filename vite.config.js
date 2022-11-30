@@ -5,8 +5,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
-            name: 'toaster.vjs',
-            fileName: 'toaster.vjs'
+            name: 'toastinette.js',
+            fileName: 'toastinette'
         },
         rollupOptions: {
 

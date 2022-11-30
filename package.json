@@ -1,14 +1,18 @@
 {
-  "name": "toaster.vjs",
+  "name": "toastinette.js",
+  "license": "MIT",
   "private": false,
   "version": "0.0.1",
-  "main": "dist/toaster.vjs.js",
+  "main": "dist/toastinette.js",
+  "unpkg": "dist/toastinette.umd.cjs",
   "type": "module",
   "description": "Vanilla JS notifications with SSR FlashBag support via DOM",
+  "author": "Nicolas Lopes",
   "keywords": [
     "notification",
     "toast",
-    "alert"
+    "alert",
+    "toastinette"
   ],
   "files": [
     "/dist"

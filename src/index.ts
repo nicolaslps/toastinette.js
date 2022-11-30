@@ -1,1 +1,1 @@
-export * from './toaster.vjs'
+export * from './toastinette.js'

@@ -2,8 +2,8 @@
     <img alt="Logo" height="300" src="./doc/images/toasterLogo.svg">
 </div>
 
-# Toaster
-Toaster is a JS package that allows you to add notifications to your app.
+# Toastinette.js DO NOT USE PACKAGE UNDER DEVELOPMENT
+Toastinette.js is a JS package that allows you to add notifications to your app.
 <hr/>
 
 ## Badges
