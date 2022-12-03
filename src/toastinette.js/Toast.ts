@@ -1,4 +1,3 @@
-import sanitizeHtml from 'sanitize-html';
 import {ToastProps} from "./utils/types";
 import {toastersContainerIds} from "./utils/defaultValues";
 
@@ -73,19 +72,19 @@ export class Toast{
         let toastIcon = document.createElement('div');
         toastIcon.classList.add('toast-icon');
         if (typeof this.toastIcon === "string") {
-            toastIcon.innerHTML = sanitizeHtml(this.toastIcon);
+            toastIcon.innerHTML = this.toastIcon;
         }
         let toastContent = document.createElement('div');
         toastContent.classList.add('toast-content');
         let toastTitle = document.createElement('div');
         toastTitle.classList.add('toast-title');
         if (typeof this.toastTitle === "string") {
-            toastTitle.innerText = sanitizeHtml(this.toastTitle);
+            toastTitle.innerText = this.toastTitle;
         }
         let toastText = document.createElement('div');
         toastText.classList.add('toast-text');
         if (typeof this.toastMessage === "string") {
-            toastText.innerText = sanitizeHtml(this.toastMessage);
+            toastText.innerText = this.toastMessage;
         }
         toastContent.append(toastTitle);
         toastContent.append(toastText);

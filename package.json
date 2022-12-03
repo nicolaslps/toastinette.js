@@ -3,14 +3,18 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "unpkg": "dist/toastinette.umd.cjs",
   "main": "./dist/toastinette.umd.cjs",
   "module": "./dist/toastinette.js",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/toastinette.js",
+      "require": "./dist/toastinette.umd.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "description": "Vanilla JS notifications with SSR FlashBag support via DOM",
