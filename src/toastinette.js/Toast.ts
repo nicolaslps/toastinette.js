@@ -1,12 +1,14 @@
+import sanitizeHtml from 'sanitize-html';
 import {ToastProps} from "./utils/types";
 import {toastersContainerIds} from "./utils/defaultValues";
 
 export class Toast{
-    private toastType: string | undefined;
-    private toastTitle: string | undefined;
-    private toastMessage: string | undefined;
-    private toastPosition: string | undefined;
-    private toastDisplayTime: number | undefined;
+    private toastType: string;
+    private toastTitle: string;
+    private toastMessage: string;
+    private toastPosition: string;
+    private toastDisplayTime: number;
+    private toastIcon: string;
     private toastElement: HTMLElement;
     private toasters: {[key: string]: HTMLElement|null};
 
@@ -16,6 +18,7 @@ export class Toast{
         this.toastMessage = props.message;
         this.toastPosition = props.position;
         this.toastDisplayTime = props.displayDuration;
+        this.toastIcon = props.icon;
         this.toasters = toasters;
 
         let toast = this.createHtml();
@@ -60,33 +63,46 @@ export class Toast{
     createHtml(){
         let toast = document.createElement('div');
         toast.classList.add('toast')
+        toast.classList.add("default-theme")
+        toast.classList.add(this.toastType)
         toast.dataset.toastType = this.toastType;
         // toast.append(tmpl.content.cloneNode(true));
 
         let toastBody = document.createElement('div');
         toastBody.classList.add('toast-body');
-        // let toastIcon = document.createElement('div');
-        // toastIcon.classList.add('toast-icon');
-        // toastIcon.innerText = "🦄";
+        let toastIcon = document.createElement('div');
+        toastIcon.classList.add('toast-icon');
+        if (typeof this.toastIcon === "string") {
+            toastIcon.innerHTML = sanitizeHtml(this.toastIcon);
+        }
         let toastContent = document.createElement('div');
         toastContent.classList.add('toast-content');
         let toastTitle = document.createElement('div');
         toastTitle.classList.add('toast-title');
         if (typeof this.toastTitle === "string") {
-            toastTitle.innerText = this.toastTitle;
+            toastTitle.innerText = sanitizeHtml(this.toastTitle);
         }
         let toastText = document.createElement('div');
         toastText.classList.add('toast-text');
         if (typeof this.toastMessage === "string") {
-            toastText.innerText = this.toastMessage;
+            toastText.innerText = sanitizeHtml(this.toastMessage);
         }
         toastContent.append(toastTitle);
         toastContent.append(toastText);
-        // toastBody.append(toastIcon);
+        toastBody.append(toastIcon);
         toastBody.append(toastContent);
-        let closeButton = document.createElement('div');
         toast.append(toastBody);
+        let closeButton = document.createElement('div');
+        closeButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>'
+        closeButton.classList.add('close-toast-button');
+
+        let progressBar = document.createElement('div');
+        progressBar.classList.add('toast-progress-bar');
+        progressBar.style.animationDuration = this.toastDisplayTime+"ms";
+
         toast.append(closeButton);
+        toast.append(progressBar);
+        toast.onclick = () => this.hide();
 
         return toast;
     }

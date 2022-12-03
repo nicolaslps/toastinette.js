@@ -3,32 +3,36 @@ body {
   color: white;
 }
 
+:root {
+  --toastinette-global-color-background: #fff;
+  --toastinette-global-color-base: #000000;
+  --toastinette-global-color-info: #3498db;
+  --toastinette-global-color-success: #07bc0c;
+  --toastinette-global-color-warning: #f1c40f;
+  --toastinette-global-color-error: #e74c3c;
+
+  --toastinette-toast-width: 20rem;
+  --toastinette-toast-background: #fff;
+  --toastinette-toast-min-height: 64px;
+  --toastinette-toast-max-height: 800px;
+
+
+  --toastinette-icon-color-info: var(--toastinette-global-color-info);
+  --toastinette-icon-color-success: var(--toastinette-global-color-success);
+  --toastinette-icon-color-warning: var(--toastinette-global-color-warning);
+  --toastinette-icon-color-error: var(--toastinette-global-color-error);
+
+  --toastinette-text-base: #757575;
+  --toastinette-text-info: #fff;
+  --toastinette-text-success: #fff;
+  --toastinette-text-warning: #fff;
+  --toastinette-text-error: #fff;
+
+}
 
 .toaster-container {
   position: absolute;
   overflow: hidden;
-
-  //&.toaster-container-top {
-  //  top: 0;
-  //}
-  //
-  //&.toaster-container-left {
-  //  left: 0;
-  //}
-  //
-  //&.toaster-container-right {
-  //  right: 0;
-  //
-  //}
-  //
-  //&.toaster-container-bottom {
-  //  bottom: 0;
-  //}
-  //
-  //&.toaster-container-center {
-  //  left: 50%;
-  //}
-
 
   &.toaster-container-left-top {
     top: 0;
@@ -114,20 +118,94 @@ body {
 
   .toast {
     position: relative;
-    background: white;
-    width: 16rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    border-radius: 0.5rem; /* 8px */
-    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--toastinette-global-color-background);
+    width: var(--toastinette-toast-width);
+    min-height: 64px;
+    padding: 8px;
     margin: 0.5rem 0.5rem 1rem;
+    color: black;
     transition: all;
     transition-duration: 200ms;
-    color: black;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+
+    &.default-theme {
+
+      &.info {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-info);
+        }
+      }
+
+      &.success {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-success);
+        }
+      }
+
+      &.warning {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-warning);
+        }
+      }
+
+      &.error {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-error);
+        }
+      }
+    }
+
+    &.colored-theme {
+
+      &.info {
+        background-color: var(--toastinette-global-color-info);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-info);
+        }
+      }
+
+      &.success {
+        background-color: var(--toastinette-global-color-success);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-success);
+        }
+      }
+
+      &.warning {
+        background-color: var(--toastinette-global-color-warning);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-warning);
+        }
+      }
+
+      &.error {
+        background-color: var(--toastinette-global-color-error);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-error);
+        }
+      }
+    }
+
 
     .toast-body {
       display: flex;
 
       .toast-icon {
+        min-width: 1.375rem;
         margin-right: 1rem;
       }
 
@@ -151,12 +229,38 @@ body {
       position: absolute;
       right: 0.5rem;
       top: 7px;
-      width: 1.2rem;
-      svg {
+      width: 1.1rem;
+      transition: transform 0.2s;
+      color: black;
+      opacity: 0.3;
 
+      &:hover{
+        //transform: scale(1.2);
+        opacity: 1;
       }
     }
 
+
+    .toast-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      opacity: 0.7;
+      border-radius: 0.5rem;
+      background-color: var(--toastinette-global-color-base);
+      animation: progres linear;
+
+      @keyframes progres {
+        0% {
+          width: 100%;
+        }
+        100% {
+          width: 0%;
+        }
+      };
+    }
   }
 }
 

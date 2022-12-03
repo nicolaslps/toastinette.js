@@ -1,4 +1,3 @@
-import './css/style.scss'
 import {Toast} from "./Toast";
 import {toastPositions, ToastProps} from "./utils/types";
 import {

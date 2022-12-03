@@ -34,6 +34,7 @@ const defaultToastDefaultOption: ToastProps = {
     message: "And this is the info toast message",
     position: toastPositionsValues.top_right,
     displayDuration: 5000,
+    icon: "🍞",
 }
 
 
@@ -43,6 +44,7 @@ const infoToastDefaultOption: ToastProps = {
     message: "And this is the info toast message",
     position: toastPositionsValues.top_right,
     displayDuration: 5000,
+    icon: "🟦",
 }
 
 
@@ -52,6 +54,7 @@ const successToastDefaultOption: ToastProps = {
     message: "And this is the success toast message",
     position: toastPositionsValues.top_right,
     displayDuration: 5000,
+    icon: "✅",
 }
 
 
@@ -61,6 +64,7 @@ const warningToastDefaultOption: ToastProps = {
     message: "And this is the warning toast message",
     position: toastPositionsValues.top_right,
     displayDuration: 5000,
+    icon: "⚠️",
 }
 
 
@@ -70,6 +74,7 @@ const errorToastDefaultOption: ToastProps = {
     message: "And this is the error toast message",
     position: toastPositionsValues.top_right,
     displayDuration: 5000,
+    icon: "❌",
 }
 
 
