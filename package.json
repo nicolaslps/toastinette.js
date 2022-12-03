@@ -2,10 +2,17 @@
   "name": "toastinette.js",
   "license": "MIT",
   "private": false,
-  "version": "0.0.2",
-  "main": "dist/toastinette.js",
-  "unpkg": "dist/toastinette.umd.cjs",
   "type": "module",
+  "version": "0.0.2.1",
+  "unpkg": "dist/toastinette.umd.cjs",
+  "main": "./dist/toastinette.umd.cjs",
+  "module": "./dist/toastinette.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.js",
+      "require": "./dist/my-lib.umd.cjs"
+    }
+  },
   "description": "Vanilla JS notifications with SSR FlashBag support via DOM",
   "author": "Nicolas Lopes",
   "keywords": [
