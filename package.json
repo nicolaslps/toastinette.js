@@ -3,7 +3,7 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "unpkg": "dist/toastinette.umd.cjs",
   "main": "./dist/toastinette.umd.cjs",
   "module": "./dist/toastinette.js",
@@ -19,6 +19,10 @@
   },
   "description": "Vanilla JS notifications with SSR FlashBag support via DOM",
   "author": "Nicolas Lopes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolaslps/toastinette.js"
+  },
   "keywords": [
     "notification",
     "toast",
