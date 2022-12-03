@@ -32,15 +32,6 @@ npm :
 npm i toastinette.js
 ```
 
-
-cdn :
-
-```html
-https://cdn.jsdelivr.net/npm/toastinette.js@0.0.5/dist/toastinette.umd.cjs
-```
-
-
-
 ## Documentation
 
 [//]: # ([Documentation]&#40;https://www.google.com/&#41;)
