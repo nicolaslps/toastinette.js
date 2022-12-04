@@ -1,0 +1,26 @@
+:root {
+  --toastinette-global-color-background: #fff;
+  --toastinette-global-color-base: #000000;
+  --toastinette-global-color-info: #3498db;
+  --toastinette-global-color-success: #07bc0c;
+  --toastinette-global-color-warning: #f1c40f;
+  --toastinette-global-color-error: #e74c3c;
+
+  --toastinette-toast-width: 20rem;
+  --toastinette-toast-background: #fff;
+  --toastinette-toast-min-height: 64px;
+  --toastinette-toast-max-height: 800px;
+
+
+  --toastinette-icon-color-info: var(--toastinette-global-color-info);
+  --toastinette-icon-color-success: var(--toastinette-global-color-success);
+  --toastinette-icon-color-warning: var(--toastinette-global-color-warning);
+  --toastinette-icon-color-error: var(--toastinette-global-color-error);
+
+  --toastinette-text-base: #757575;
+  --toastinette-text-info: #fff;
+  --toastinette-text-success: #fff;
+  --toastinette-text-warning: #fff;
+  --toastinette-text-error: #fff;
+
+}

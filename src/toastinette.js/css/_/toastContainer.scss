@@ -1,0 +1,129 @@
+@import "./toast";
+@import "./animations/bounce";
+
+.toaster-container {
+  position: absolute;
+  padding: 7px;
+
+  &.toaster-container-left-top {
+    top: 0;
+    left: 0;
+
+    .toast {
+      transform: translateX(-110%);
+
+      &.toast-animate-enter {
+        animation: toastinette-enter-left 0.7s linear;
+        animation-fill-mode: forwards;
+      }
+
+      &.toast-animate-exit {
+        animation: toastinette-exit-left 0.7s linear;
+        animation-fill-mode: backwards;
+      }
+    }
+  }
+
+  &.toaster-container-center-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .toast {
+      transform: translateY(-110vh);
+
+      &.toast-animate-enter {
+        animation: toastinette-enter-top 0.7s linear;
+        animation-fill-mode: forwards;
+      }
+
+      &.toast-animate-exit {
+        animation: toastinette-exit-top 0.7s linear;
+        animation-fill-mode: backwards;
+      }
+    }
+  }
+
+  &.toaster-container-right-top {
+    top: 0;
+    right: 0;
+
+    .toast {
+      transform: translateX(110%);
+
+      &.toast-animate-enter {
+        animation: toastinette-enter-right 0.7s linear;
+        animation-fill-mode: forwards;
+      }
+
+      &.toast-animate-exit {
+        animation: toastinette-exit-right 0.7s linear;
+        animation-fill-mode: backwards;
+      }
+
+    }
+  }
+
+  &.toaster-container-left-bottom {
+    bottom: 0;
+    left: 0;
+
+    .toast {
+      transform: translateX(-110%);
+
+      &.toast-animate-enter {
+        animation: toastinette-enter-left 0.7s linear;
+        animation-fill-mode: forwards;
+      }
+
+      &.toast-animate-exit {
+        animation: toastinette-exit-left 0.7s linear;
+        animation-fill-mode: backwards;
+      }
+    }
+  }
+
+  &.toaster-container-center-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .toast {
+      transform: translateY(110vh);
+
+      &.toast-animate-enter {
+        animation: toastinette-enter-bottom 0.7s linear;
+        animation-fill-mode: forwards;
+      }
+
+      &.toast-animate-exit {
+        animation: toastinette-exit-bottom 0.7s linear;
+        animation-fill-mode: backwards;
+      }
+    }
+  }
+
+  &.toaster-container-right-bottom {
+    bottom: 0;
+    right: 0;
+
+    .toast {
+      transform: translateX(110%);
+
+      &.toast-animate-enter {
+        animation: toastinette-enter-right 0.7s linear;
+        animation-fill-mode: forwards;
+      }
+
+      &.toast-animate-exit {
+        animation: toastinette-exit-right 0.7s linear;
+        animation-fill-mode: backwards;
+      }
+    }
+  }
+
+
+
+  @include toast;
+}
+

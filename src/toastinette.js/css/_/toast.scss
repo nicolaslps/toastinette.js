@@ -1,0 +1,135 @@
+@import "./progressBar";
+@import "./animations/bounce";
+
+@mixin toast {
+  .toast {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--toastinette-global-color-background);
+    width: var(--toastinette-toast-width);
+    min-height: 64px;
+    padding: 8px;
+    margin: 0.5rem 0.5rem 1rem;
+    color: black;
+    transition: all;
+    transition-duration: 200ms;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+
+    &.default-theme {
+
+      &.info {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-info);
+        }
+      }
+
+      &.success {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-success);
+        }
+      }
+
+      &.warning {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-warning);
+        }
+      }
+
+      &.error {
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-error);
+        }
+      }
+    }
+
+    &.colored-theme {
+
+      &.info {
+        background-color: var(--toastinette-global-color-info);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-info);
+        }
+      }
+
+      &.success {
+        background-color: var(--toastinette-global-color-success);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-success);
+        }
+      }
+
+      &.warning {
+        background-color: var(--toastinette-global-color-warning);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-warning);
+        }
+      }
+
+      &.error {
+        background-color: var(--toastinette-global-color-error);
+
+        .toast-progress-bar {
+          background-color: var(--toastinette-global-color-error);
+        }
+      }
+    }
+
+
+    .toast-body {
+      display: flex;
+
+      .toast-icon {
+        min-width: 1.375rem;
+        margin-right: 1rem;
+      }
+
+      .toast-content {
+
+        .toast-title {
+          font-weight: bold;
+        }
+
+        .toast-text {
+
+        }
+
+      }
+
+
+    }
+
+
+    .close-toast-button {
+      position: absolute;
+      right: 0.5rem;
+      top: 7px;
+      width: 1.1rem;
+      transition: transform 0.2s;
+      color: black;
+      opacity: 0.3;
+
+      &:hover {
+        //transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+
+    @include progressBar;
+  }
+
+
+}
+

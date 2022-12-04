@@ -1,6 +1,5 @@
 import {ToastProps} from "./utils/types";
 import {toastersContainerIds} from "./utils/defaultValues";
-
 export class Toast{
     private toastType: string;
     private toastTitle: string;
@@ -109,7 +108,7 @@ export class Toast{
 
     display(){
         setTimeout(() => {
-            this.toastElement.classList.add('toast-visible')
+            this.toastElement.classList.add('toast-animate-enter');
         }, 500)
 
         setTimeout(() => {
@@ -118,9 +117,11 @@ export class Toast{
     }
 
     hide(){
-        this.toastElement.classList.remove('toast-visible')
+        this.toastElement.classList.remove('toast-animate-enter');
+        this.toastElement.classList.add('toast-animate-exit');
+
         setTimeout(() => {
             this.toastElement.parentNode?.removeChild(this.toastElement);
-        }, 500)
+        }, 800)
     }
 }
