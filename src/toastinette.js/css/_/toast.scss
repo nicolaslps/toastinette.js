@@ -15,36 +15,32 @@
     transition: all;
     transition-duration: 200ms;
     border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
     cursor: pointer;
     overflow: hidden;
     user-select: none;
 
     &.default-theme {
-
       &.info {
-
         .toast-progress-bar {
           background-color: var(--toastinette-global-color-info);
         }
       }
 
       &.success {
-
         .toast-progress-bar {
           background-color: var(--toastinette-global-color-success);
         }
       }
 
       &.warning {
-
         .toast-progress-bar {
           background-color: var(--toastinette-global-color-warning);
         }
       }
 
       &.error {
-
         .toast-progress-bar {
           background-color: var(--toastinette-global-color-error);
         }
@@ -52,7 +48,6 @@
     }
 
     &.colored-theme {
-
       &.info {
         background-color: var(--toastinette-global-color-info);
 
@@ -86,7 +81,6 @@
       }
     }
 
-
     .toast-body {
       display: flex;
 
@@ -96,20 +90,14 @@
       }
 
       .toast-content {
-
         .toast-title {
           font-weight: bold;
         }
 
         .toast-text {
-
         }
-
       }
-
-
     }
-
 
     .close-toast-button {
       position: absolute;
@@ -126,10 +114,6 @@
       }
     }
 
-
     @include progressBar;
   }
-
-
 }
-

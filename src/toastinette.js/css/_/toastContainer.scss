@@ -60,7 +60,6 @@
         animation: toastinette-exit-right 0.7s linear;
         animation-fill-mode: backwards;
       }
-
     }
   }
 
@@ -122,8 +121,5 @@
     }
   }
 
-
-
   @include toast;
 }
-
