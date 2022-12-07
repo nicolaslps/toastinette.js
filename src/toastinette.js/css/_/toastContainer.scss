@@ -4,6 +4,7 @@
 .toaster-container {
   position: absolute;
   padding: 7px;
+  overflow: hidden;
 
   &.toaster-container-left-top {
     top: 0;
