@@ -87,7 +87,7 @@ export class Toaster {
   }
 
   getDomToast() {
-    let domToats = document.querySelectorAll('[data-toaster-toast-package] > [data-toaster-toast]');
+    let domToats = document.querySelectorAll('[data-toastinette-dom-toast] > [data-toastinette-toast]');
     // @ts-ignore
     domToats.forEach((toast: Toast) => {
       if (!(toast instanceof HTMLElement)) {
@@ -97,14 +97,14 @@ export class Toaster {
         return;
       }
       // @ts-ignore
-      let props = this.getToastDefaultProps(toast.dataset.toasterType);
+      let props = this.getToastDefaultProps(toast.dataset.toastinetteType);
       // @ts-ignore
-      props.type = toast.dataset.toasterType;
+      props.type = toast.dataset.toastinetteType;
       // @ts-ignore
-      props.title = toast.dataset.toasterTitle;
+      props.title = toast.dataset.toastinetteTitle;
       // @ts-ignore
-      props.message = toast.dataset.toasterMessage;
-      props.position = <toastPositions>toast.dataset.toasterToast;
+      props.message = toast.dataset.toastinetteMessage;
+      props.position = <toastPositions>toast.dataset.toastinetteToast;
       this.createToast(props);
     });
   }

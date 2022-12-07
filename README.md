@@ -44,8 +44,8 @@ improved documentation will be available when this package reaches a stable rele
 ### Import js and style from toastinette.js
 
 ```js
-import "./toastinette.js/css/style.scss";
-import { Toaster } from "./toastinette.js";
+import 'toastinette.js/dist/style.css'
+import { Toaster } from "toastinette.js";
 ```
 
 ### Instantiate the toaster
@@ -61,13 +61,6 @@ let toaster = new Toaster();
 ```js
 toaster.info(title, text, position, time);
 ```
-
-    type: 'info' | 'success' | 'warning' | 'error' | 'default'
-    title: string
-    message: string
-    position: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left'
-    displayDuration: number
-    icon: string;
 
 | Option     |   type   |                    Default                    |                                                                 Description                                                                 |
 | ---------- | :------: | :-------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
@@ -154,30 +147,30 @@ Result :
 ## Usage through SSR
 
 ```html
-<div data-toaster-toast-package>
+<div data-toastinette-dom-toast>
   <div
-    data-toaster-toast
-    data-toaster-type="info"
-    data-toaster-title="Test dom 1"
-    data-toaster-message="Test dom message 1"
+    data-toastinette-toast
+    data-toastinette-type="info"
+    data-toastinette-title="Test dom 1"
+    data-toastinette-message="Test dom message 1"
   ></div>
   <div
-    data-toaster-toast
-    data-toaster-type="success"
-    data-toaster-title="Test dom 2"
-    data-toaster-message="Test dom message 2"
+    data-toastinette-toast
+    data-toastinette-type="success"
+    data-toastinette-title="Test dom 2"
+    data-toastinette-message="Test dom message 2"
   ></div>
   <div
-    data-toaster-toast
-    data-toaster-type="warning"
-    data-toaster-title="Test dom 3"
-    data-toaster-message="Test dom message 3"
+    data-toastinette-toast
+    data-toastinette-type="warning"
+    data-toastinette-title="Test dom 3"
+    data-toastinette-message="Test dom message 3"
   ></div>
   <div
-    data-toaster-toast
-    data-toaster-type="error"
-    data-toaster-title="Test dom 4"
-    data-toaster-message="Test dom message 4"
+    data-toastinette-toast
+    data-toastinette-type="error"
+    data-toastinette-title="Test dom 4"
+    data-toastinette-message="Test dom message 4"
   ></div>
 </div>
 ```
@@ -191,3 +184,6 @@ Result :
 ## License
 
 [![](https://img.shields.io/npm/l/toastinette.js?style=for-the-badge)](https://img.shields.io/npm/l/toastinette.js?style=for-the-badge)
+
+
+This package is heavily inspired by [React-Toastify](https://github.com/fkhadra/react-toastify). Go leave a star on it :)
