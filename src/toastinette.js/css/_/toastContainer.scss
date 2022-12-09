@@ -2,9 +2,11 @@
 @import "./animations/bounce";
 
 .toaster-container {
-  position: absolute;
+  position: fixed;
   padding: 7px;
   overflow: hidden;
+  z-index: 9999999;
+
 
   &.toaster-container-left-top {
     top: 0;
