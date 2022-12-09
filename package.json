@@ -3,7 +3,7 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "unpkg": "dist/toastinette.umd.cjs",
   "main": "./dist/toastinette.umd.cjs",
   "module": "./dist/toastinette.js",
