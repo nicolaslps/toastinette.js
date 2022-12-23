@@ -23,4 +23,11 @@ interface ToastProps {
   icon: string;
 }
 
-export type { toastPositions, ToastProps };
+interface ToasterProps{
+  autoClose: number
+  theme: string
+  themes: String[]
+  toasts: {[index: string]: ToastProps}
+}
+
+export type { toastPositions, ToastProps, ToasterProps };

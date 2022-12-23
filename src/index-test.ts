@@ -1,9 +1,11 @@
 import './toastinette.js/css/main.scss';
 import { Toaster } from './toastinette.js';
 
-let toaster = new Toaster();
+let toaster = new Toaster({
 
-toaster.info('This is the info toasts title', 'And this is the info toast message', 'top-right', 10000);
+});
+
+toaster.info('This is the info toasts title', 'And this is the info toast message', 'top-right', 1000000);
 toaster.success('This is the info toasts title', 'And this is the info toast message', 'top-right', 20000);
 toaster.warning('This is the success toasts title', 'And this is the success toast message', 'top-right', 15000);
 toaster.warning('This is the success toasts title', 'And this is the success toast message', 'bottom-right', 15000);

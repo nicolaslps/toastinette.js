@@ -1,13 +1,8 @@
 import { Toast } from './Toast';
 import { toastPositions, ToastProps } from './utils/types';
 import {
-  defaultToastDefaultOption,
-  infoToastDefaultOption,
-  successToastDefaultOption,
-  warningToastDefaultOption,
-  errorToastDefaultOption,
   toastersContainerIds,
-  toastTypesValues,
+  toastTypesValues, defaultToasterOptions,
 } from './utils/defaultValues';
 
 export class Toaster {
@@ -21,14 +16,20 @@ export class Toaster {
   };
 
   readonly waitingQueue: Array<Toast>;
-  readonly displayedToasts: Array<Toast>;
+  options: ToastProps;
 
-  constructor() {
+  constructor(options: Object) {
     this.waitingQueue = [];
-    this.displayedToasts = [];
+    this.options = this.processOptions(options);
     this.initDom();
 
     this.getDomToast();
+  }
+
+  processOptions(customOptions: Object){
+    let options = defaultToasterOptions;
+    console.log(customOptions);
+    return options;
   }
 
   initDom() {
@@ -110,21 +111,22 @@ export class Toaster {
   }
 
   createToast(customProps: ToastProps) {
-    this.waitingQueue.push(new Toast(customProps, this.toasters));
+    let options = defaultToasterOptions.toasts[customProps.type];
+    this.waitingQueue.push(new Toast(customProps, this.toasters, options));
   }
 
   getToastDefaultProps(toastType: string): ToastProps {
     switch (toastType) {
       case toastTypesValues.DEFAULT:
-        return defaultToastDefaultOption;
+        return this.options.toasts[toastTypesValues.DEFAULT];
       case toastTypesValues.INFO:
-        return infoToastDefaultOption;
+        return this.options.toasts[toastTypesValues.INFO];
       case toastTypesValues.SUCCESS:
-        return successToastDefaultOption;
+        return this.options.toasts[toastTypesValues.SUCCESS];
       case toastTypesValues.WARNING:
-        return warningToastDefaultOption;
+        return this.options.toasts[toastTypesValues.WARNING];
       case toastTypesValues.ERROR:
-        return errorToastDefaultOption;
+        return this.options.toasts[toastTypesValues.ERROR];
       default:
         return defaultToastDefaultOption;
     }
@@ -175,17 +177,4 @@ export class Toaster {
     this.createToast(props);
   }
 
-  test() {
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-left", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-center", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-right", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "bottom-left", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "bottom-center", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "bottom-right", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-left", 2000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-left", 3000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-left", 5000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-left", 6000)
-    // this.createToast('Info', "Test", 'bla bla bla bla bla', "top-left", 2000)
-  }
 }

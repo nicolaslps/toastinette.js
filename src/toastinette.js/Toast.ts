@@ -11,7 +11,9 @@ export class Toast {
   private toastElement: HTMLElement;
   private toasters: { [key: string]: HTMLElement | null };
 
-  constructor(props: ToastProps, toasters: { [key: string]: HTMLElement | null }) {
+  private options: Object;
+
+  constructor(props: ToastProps, toasters: { [key: string]: HTMLElement | null }, options: Object) {
     this.toastType = props.type;
     this.toastTitle = props.title;
     this.toastMessage = props.message;
@@ -19,6 +21,7 @@ export class Toast {
     this.toastDisplayTime = props.displayDuration;
     this.toastIcon = props.icon;
     this.toasters = toasters;
+    this.options = options;
 
     this.toastElement = this.createHtml();
     this.render(this.toasters);
