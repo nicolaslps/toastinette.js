@@ -20,7 +20,14 @@ interface ToastProps {
     | "bottom-center"
     | "bottom-left";
   displayDuration: number;
-  icon: string;
+  delay: number,
+  icon: IconProps;
+}
+
+interface IconProps{
+  enabled: boolean,
+  type: string,
+  data: string
 }
 
 interface ToasterProps{

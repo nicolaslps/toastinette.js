@@ -1,9 +1,11 @@
 import { Toast } from './Toast';
-import { toastPositions, ToastProps } from './utils/types';
+import {ToasterProps, toastPositions, ToastProps} from './utils/types';
 import {
   toastersContainerIds,
   toastTypesValues, defaultToasterOptions,
 } from './utils/defaultValues';
+// @ts-ignore
+import {merge} from "./utils/merge.js";
 
 export class Toaster {
   readonly toasters: { [key: string]: HTMLElement | null } = {
@@ -16,7 +18,7 @@ export class Toaster {
   };
 
   readonly waitingQueue: Array<Toast>;
-  options: ToastProps;
+  options: ToasterProps;
 
   constructor(options: Object) {
     this.waitingQueue = [];
@@ -26,10 +28,11 @@ export class Toaster {
     this.getDomToast();
   }
 
-  processOptions(customOptions: Object){
-    let options = defaultToasterOptions;
-    console.log(customOptions);
-    return options;
+  processOptions(customOptions: Object): ToasterProps{
+    // let processedOptions = {...defaultToasterOptions, ...customOptions};
+    let processedOptions = merge(defaultToasterOptions, customOptions);
+    console.log(processedOptions)
+    return processedOptions;
   }
 
   initDom() {
@@ -111,8 +114,8 @@ export class Toaster {
   }
 
   createToast(customProps: ToastProps) {
-    let options = defaultToasterOptions.toasts[customProps.type];
-    this.waitingQueue.push(new Toast(customProps, this.toasters, options));
+    let options = { ...defaultToasterOptions, ...this.options, ...customProps, ...defaultToasterOptions.toasts[customProps.type]};
+    this.waitingQueue.push(new Toast(options, this.toasters));
   }
 
   getToastDefaultProps(toastType: string): ToastProps {
@@ -128,12 +131,17 @@ export class Toaster {
       case toastTypesValues.ERROR:
         return this.options.toasts[toastTypesValues.ERROR];
       default:
-        return defaultToastDefaultOption;
+        return this.options.toasts[toastTypesValues.DEFAULT];
     }
   }
 
+  // toast(options: ToastProps) {
+  //
+  // }
+
   info(title: string, message: string, position: string, displayDuration: number) {
     let props = this.getToastDefaultProps(toastTypesValues.INFO);
+    console.log(props)
     props.title = title;
     props.message = message;
     props.position = <toastPositions>position;

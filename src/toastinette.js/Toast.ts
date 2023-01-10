@@ -1,35 +1,22 @@
 import { ToastProps } from './utils/types';
-import { toastersContainerIds } from './utils/defaultValues';
+import {iconType, toastersContainerIds} from './utils/defaultValues';
 
 export class Toast {
-  private toastType: string;
-  private toastTitle: string;
-  private toastMessage: string;
-  private toastPosition: string;
-  private toastDisplayTime: number;
-  private toastIcon: string;
+  private props: ToastProps;
   private toastElement: HTMLElement;
   private toasters: { [key: string]: HTMLElement | null };
 
-  private options: Object;
-
-  constructor(props: ToastProps, toasters: { [key: string]: HTMLElement | null }, options: Object) {
-    this.toastType = props.type;
-    this.toastTitle = props.title;
-    this.toastMessage = props.message;
-    this.toastPosition = props.position;
-    this.toastDisplayTime = props.displayDuration;
-    this.toastIcon = props.icon;
+  constructor(props: ToastProps, toasters: { [key: string]: HTMLElement | null }) {
+    this.props = props;
     this.toasters = toasters;
-    this.options = options;
-
     this.toastElement = this.createHtml();
+
     this.render(this.toasters);
   }
 
   getToaster(toasterContainer: { [key: string]: HTMLElement | null }): HTMLElement {
     let defaultElement = document.createElement('div');
-    switch (this.toastPosition) {
+    switch (this.props.position) {
       case 'top-left':
         return toasterContainer[toastersContainerIds.toaster_top_left_container] ?? defaultElement;
       case 'top-center':
@@ -56,27 +43,44 @@ export class Toast {
   createHtml() {
     let toast = document.createElement('div');
     toast.classList.add('toast');
-    toast.classList.add('default-theme');
-    toast.classList.add(this.toastType);
-    toast.dataset.toastType = this.toastType;
+    toast.classList.add(this.props.theme);
+    toast.classList.add(this.props.type);
+    toast.dataset.toastType = this.props.type;
     // toast.append(tmpl.content.cloneNode(true));
 
     let toastBody = document.createElement('div');
     toastBody.classList.add('toast-body');
-    let toastIcon = document.createElement('div');
-    toastIcon.classList.add('toast-icon');
-    toastIcon.innerHTML = this.toastIcon;
+
+
+
+
     let toastContent = document.createElement('div');
     toastContent.classList.add('toast-content');
     let toastTitle = document.createElement('div');
     toastTitle.classList.add('toast-title');
-    toastTitle.innerText = this.toastTitle;
+    toastTitle.innerText = this.props.title;
     let toastText = document.createElement('div');
     toastText.classList.add('toast-text');
-    toastText.innerText = this.toastMessage;
+    toastText.innerText = this.props.message;
     toastContent.append(toastTitle);
     toastContent.append(toastText);
-    toastBody.append(toastIcon);
+
+    if(this.props.icon.enabled){
+      if(this.props.icon.type == iconType.svg){
+        let toastIcon = document.createElement('div');
+        toastIcon.classList.add('toast-icon');
+        toastIcon.innerHTML = this.props.icon.data;
+        toastBody.append(toastIcon);
+      }
+      if(this.props.icon.type == iconType.img){
+        let toastIcon = document.createElement('div');
+        toastIcon.classList.add('toast-icon');
+        toastIcon.innerHTML = this.props.icon;
+        toastBody.append(toastIcon);
+      }
+
+    }
+
     toastBody.append(toastContent);
     toast.append(toastBody);
     let closeButton = document.createElement('div');
@@ -84,12 +88,15 @@ export class Toast {
       '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>';
     closeButton.classList.add('close-toast-button');
 
-    let progressBar = document.createElement('div');
-    progressBar.classList.add('toast-progress-bar');
-    progressBar.style.animationDuration = this.toastDisplayTime + 'ms';
-
     toast.append(closeButton);
-    toast.append(progressBar);
+
+    if(this.props.autoClose){
+      let progressBar = document.createElement('div');
+      progressBar.classList.add('toast-progress-bar');
+      progressBar.style.animationDuration = this.props.displayDuration + 'ms';
+
+      toast.append(progressBar);
+    }
     toast.onclick = () => this.hide();
 
     return toast;
@@ -100,9 +107,11 @@ export class Toast {
       this.toastElement.classList.add('toast-animate-enter');
     }, 500);
 
-    setTimeout(() => {
-      this.hide();
-    }, this.toastDisplayTime);
+    if(this.props.autoClose){
+      setTimeout(() => {
+        this.hide();
+      }, this.props.displayDuration);
+    }
   }
 
   hide() {
