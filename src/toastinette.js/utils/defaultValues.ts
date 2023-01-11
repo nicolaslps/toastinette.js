@@ -59,6 +59,7 @@ const defaultToasterOptions: ToasterProps = {
                 enabled: true,
                 type: iconType.svg,
                 data: defaultSVG.default,
+                customCss: "",
             }
         },
         'info': {
@@ -72,6 +73,7 @@ const defaultToasterOptions: ToasterProps = {
                 enabled: true,
                 type: iconType.svg,
                 data: defaultSVG.info,
+                customCss: "",
             }
         },
         'success': {
@@ -85,6 +87,7 @@ const defaultToasterOptions: ToasterProps = {
                 enabled: true,
                 type: iconType.svg,
                 data: defaultSVG.success,
+                customCss: "",
             }
         },
         'warning': {
@@ -98,6 +101,7 @@ const defaultToasterOptions: ToasterProps = {
                 enabled: true,
                 type: iconType.svg,
                 data: defaultSVG.warning,
+                customCss: "",
             }
         },
         'error': {
@@ -111,6 +115,7 @@ const defaultToasterOptions: ToasterProps = {
                 enabled: true,
                 type: iconType.svg,
                 data: defaultSVG.error,
+                customCss: "",
             }
         },
     }

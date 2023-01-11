@@ -28,6 +28,7 @@ interface IconProps{
   enabled: boolean,
   type: string,
   data: string
+  customCss: string
 }
 
 interface ToasterProps{
@@ -36,5 +37,23 @@ interface ToasterProps{
   themes: String[]
   toasts: {[index: string]: ToastProps}
 }
+interface mergedToastProps{
+  autoClose: number
+  theme: string
+  themes: String[]
+  type: "info" | "success" | "warning" | "error" | "default";
+  title: string;
+  message: string;
+  position:
+      | "top-right"
+      | "top-center"
+      | "top-left"
+      | "bottom-right"
+      | "bottom-center"
+      | "bottom-left";
+  displayDuration: number;
+  delay: number,
+  icon: IconProps;
+}
 
-export type { toastPositions, ToastProps, ToasterProps };
+export type { mergedToastProps, toastPositions, ToastProps, ToasterProps };

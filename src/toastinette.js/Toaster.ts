@@ -29,9 +29,7 @@ export class Toaster {
   }
 
   processOptions(customOptions: Object): ToasterProps{
-    // let processedOptions = {...defaultToasterOptions, ...customOptions};
     let processedOptions = merge(defaultToasterOptions, customOptions);
-    console.log(processedOptions)
     return processedOptions;
   }
 
@@ -139,50 +137,45 @@ export class Toaster {
   //
   // }
 
-  info(title: string, message: string, position: string, displayDuration: number) {
+  info(title: string, message: string, option: object) {
+    // position: string, displayDuration: number
     let props = this.getToastDefaultProps(toastTypesValues.INFO);
-    console.log(props)
     props.title = title;
     props.message = message;
-    props.position = <toastPositions>position;
-    props.displayDuration = displayDuration;
-    this.createToast(props);
+    let mergedProps = { ...props, ...option};
+    this.createToast(mergedProps);
   }
 
-  success(title: string, message: string, position: string, displayDuration: number) {
+  success(title: string, message: string, option: object) {
     let props = this.getToastDefaultProps(toastTypesValues.SUCCESS);
     props.title = title;
     props.message = message;
-    props.position = <toastPositions>position;
-    props.displayDuration = displayDuration;
-    this.createToast(props);
+    let mergedProps = { ...props, ...option};
+    this.createToast(mergedProps);
   }
 
-  warning(title: string, message: string, position: string, displayDuration: number) {
+  warning(title: string, message: string, option: object) {
     let props = this.getToastDefaultProps(toastTypesValues.WARNING);
     props.title = title;
     props.message = message;
-    props.position = <toastPositions>position;
-    props.displayDuration = displayDuration;
-    this.createToast(props);
+    let mergedProps = { ...props, ...option};
+    this.createToast(mergedProps);
   }
 
-  error(title: string, message: string, position: string, displayDuration: number) {
+  error(title: string, message: string, option: object) {
     let props = this.getToastDefaultProps(toastTypesValues.ERROR);
     props.title = title;
     props.message = message;
-    props.position = <toastPositions>position;
-    props.displayDuration = displayDuration;
-    this.createToast(props);
+    let mergedProps = { ...props, ...option};
+    this.createToast(mergedProps);
   }
 
-  default(title: string, message: string, position: string, displayDuration: number) {
+  default(title: string, message: string, option: object) {
     let props = this.getToastDefaultProps(toastTypesValues.DEFAULT);
     props.title = title;
     props.message = message;
-    props.position = <toastPositions>position;
-    props.displayDuration = displayDuration;
-    this.createToast(props);
+    let mergedProps = { ...props, ...option};
+    this.createToast(mergedProps);
   }
 
 }

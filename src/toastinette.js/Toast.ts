@@ -1,12 +1,12 @@
-import { ToastProps } from './utils/types';
+import {mergedToastProps} from './utils/types';
 import {iconType, toastersContainerIds} from './utils/defaultValues';
 
 export class Toast {
-  private props: ToastProps;
+  private props: mergedToastProps;
   private toastElement: HTMLElement;
   private toasters: { [key: string]: HTMLElement | null };
 
-  constructor(props: ToastProps, toasters: { [key: string]: HTMLElement | null }) {
+  constructor(props: mergedToastProps, toasters: { [key: string]: HTMLElement | null }) {
     this.props = props;
     this.toasters = toasters;
     this.toastElement = this.createHtml();
@@ -70,12 +70,14 @@ export class Toast {
         let toastIcon = document.createElement('div');
         toastIcon.classList.add('toast-icon');
         toastIcon.innerHTML = this.props.icon.data;
+        toastIcon.setAttribute('style', this.props.icon.customCss);
         toastBody.append(toastIcon);
       }
       if(this.props.icon.type == iconType.img){
-        let toastIcon = document.createElement('div');
+        let toastIcon = document.createElement('img');
         toastIcon.classList.add('toast-icon');
-        toastIcon.innerHTML = this.props.icon;
+        toastIcon.src = this.props.icon.data;
+        toastIcon.setAttribute('style', this.props.icon.customCss);
         toastBody.append(toastIcon);
       }
 
