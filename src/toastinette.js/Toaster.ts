@@ -107,7 +107,12 @@ export class Toaster {
       // @ts-ignore
       props.message = toast.dataset.toastinetteMessage;
       props.position = <toastPositions>toast.dataset.toastinetteToast;
-      this.createToast(props);
+      let mergedProps = props;
+      if( toast.dataset.toastinetteOption != null){
+        let options = JSON.parse(toast.dataset.toastinetteOption);
+        mergedProps = merge(props, options);
+      }
+      this.createToast(mergedProps);
     });
   }
 
@@ -137,44 +142,44 @@ export class Toaster {
   //
   // }
 
-  info(title: string, message: string, option: object) {
+  info(title: string, message: string, options: object) {
     // position: string, displayDuration: number
     let props = this.getToastDefaultProps(toastTypesValues.INFO);
     props.title = title;
     props.message = message;
-    let mergedProps = { ...props, ...option};
+    let mergedProps = merge(props, options);
     this.createToast(mergedProps);
   }
 
-  success(title: string, message: string, option: object) {
+  success(title: string, message: string, options: object) {
     let props = this.getToastDefaultProps(toastTypesValues.SUCCESS);
     props.title = title;
     props.message = message;
-    let mergedProps = { ...props, ...option};
+    let mergedProps = merge(props, options);
     this.createToast(mergedProps);
   }
 
-  warning(title: string, message: string, option: object) {
+  warning(title: string, message: string, options: object) {
     let props = this.getToastDefaultProps(toastTypesValues.WARNING);
     props.title = title;
     props.message = message;
-    let mergedProps = { ...props, ...option};
+    let mergedProps = merge(props, options);
     this.createToast(mergedProps);
   }
 
-  error(title: string, message: string, option: object) {
+  error(title: string, message: string, options: object) {
     let props = this.getToastDefaultProps(toastTypesValues.ERROR);
     props.title = title;
     props.message = message;
-    let mergedProps = { ...props, ...option};
+    let mergedProps = merge(props, options);
     this.createToast(mergedProps);
   }
 
-  default(title: string, message: string, option: object) {
+  default(title: string, message: string, options: object) {
     let props = this.getToastDefaultProps(toastTypesValues.DEFAULT);
     props.title = title;
     props.message = message;
-    let mergedProps = { ...props, ...option};
+    let mergedProps = merge(props, options);
     this.createToast(mergedProps);
   }
 
